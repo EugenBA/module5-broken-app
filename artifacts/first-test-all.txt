@@ -1,0 +1,7 @@
+running 6 tests
+test counts_non_zero_bytes ... ok
+test averages_only_positive ... FAILED
+test fib_small_numbers ... ok
+test dedup_preserves_uniques ...
+thread 'sums_even_numbers' (3128572) panicked at src/lib.rs:11:29:
+unsafe precondition(s) violated: slice::get_unchecked requires that the index is within the slice
