@@ -455,9 +455,9 @@ thread caused non-unwinding panic. aborting.
 ## 2.5 Найденные проблемы
 
 ### 2.5.1 rust-gdb
- - тест, не проходящий положительно: averages_only_positive
- - входное значение (вектор): p values $3 = &[i64](size=3) = {-5, 5, 15}
- - значение sum: p sum $2 = 15? нет проверки на позитивные значения, среднее не верно расчитывается
+ - тест, не проходящий положительно: <b>averages_only_positive</b>
+ - входное значение (вектор): <b>p values $3 = &[i64](size=3) = {-5, 5, 15}</b>
+ - значение sum: <b>p sum $2 = 15? нет проверки на позитивные значения, среднее не верно расчитывается</b>
 
 ### 2.5.2 MIRI
  - dereference of raw pointer is unsafe and requires unsafe block src/lib.rs:60:15 let val = *raw;
