@@ -452,6 +452,145 @@ This indicates a bug in the program. This Undefined Behavior check is optional, 
 thread caused non-unwinding panic. aborting.
 ```
 
+```text
+RUSTFLAGS="-Zsanitizer=thread -Cunsafe-allow-abi-mismatch=sanitizer" cargo test --target x86_64-unknown-linux-gnu
+   Compiling cfg-if v1.0.4
+   Compiling either v1.15.0
+   Compiling itoa v1.0.15
+   Compiling ryu v1.0.20
+   Compiling regex-syntax v0.8.8
+   Compiling plotters-backend v0.3.7
+   Compiling memchr v2.7.6
+   Compiling clap_lex v0.7.6
+   Compiling anstyle v1.0.13
+   Compiling crossbeam-utils v0.8.21
+   Compiling serde_core v1.0.228
+   Compiling zerocopy v0.8.31
+   Compiling serde v1.0.228
+   Compiling rayon-core v1.13.0
+   Compiling serde_json v1.0.145
+   Compiling libc v0.2.178
+   Compiling ciborium-io v0.2.2
+   Compiling num-traits v0.2.19
+   Compiling cast v0.3.0
+   Compiling same-file v1.0.6
+   Compiling once_cell v1.21.3
+   Compiling oorandom v11.1.5
+   Compiling anes v0.1.6
+   Compiling broken-app v0.1.0 (/mnt/ssd_data/RustProject/module5-eo/broken-app)
+   Compiling walkdir v2.5.0
+   Compiling clap_builder v4.5.53
+   Compiling itertools v0.10.5
+   Compiling plotters-svg v0.3.7
+   Compiling crossbeam-epoch v0.9.18
+   Compiling crossbeam-deque v0.8.6
+   Compiling is-terminal v0.4.17
+   Compiling plotters v0.3.7
+   Compiling rayon v1.11.0
+   Compiling regex-automata v0.4.13
+   Compiling criterion-plot v0.5.0
+   Compiling clap v4.5.53
+   Compiling half v2.7.1
+   Compiling ciborium-ll v0.2.2
+   Compiling ciborium v0.2.2
+   Compiling regex v1.12.2
+   Compiling tinytemplate v1.2.1
+   Compiling criterion v0.5.1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.65s
+     Running unittests src/lib.rs (target/x86_64-unknown-linux-gnu/debug/deps/broken_app-49c98b71c18b8b86)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/x86_64-unknown-linux-gnu/debug/deps/demo-9fe2e76aae50f5e7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/x86_64-unknown-linux-gnu/debug/deps/integration-342bf5a5d6a7434e)
+
+running 8 tests
+==================
+WARNING: ThreadSanitizer: data race (pid=16223)
+  Write of size 8 at 0x729400000148 by thread T2:                                                                                                                                                                                   
+    #0 memcpy /rustc/llvm/src/llvm-project/compiler-rt/lib/tsan/rtl/../../sanitizer_common/sanitizer_common_interceptors_memintrinsics.inc:117 (integration-342bf5a5d6a7434e+0x6f45e) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #1 core::profiling::compiler_copy::<core::mem::maybe_uninit::MaybeUninit<test::event::CompletedTest>, 304> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/profiling.rs:29 (integration-342bf5a5d6a7434e+0x117126) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #2 core::ptr::write::<core::mem::maybe_uninit::MaybeUninit<test::event::CompletedTest>> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/ptr/mod.rs:1910 (integration-342bf5a5d6a7434e+0x117126)
+    #3 <*mut core::mem::maybe_uninit::MaybeUninit<test::event::CompletedTest>>::write /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/ptr/mut_ptr.rs:1418 (integration-342bf5a5d6a7434e+0x117126)
+    #4 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::write /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:274 (integration-342bf5a5d6a7434e+0x117126)
+    #5 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:411 (integration-342bf5a5d6a7434e+0x117126)
+    #6 <std::sync::mpmc::Sender<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/mod.rs:396 (integration-342bf5a5d6a7434e+0x117126)
+
+  Previous write of size 8 at 0x729400000148 by thread T1:
+    #0 calloc /rustc/llvm/src/llvm-project/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692 (integration-342bf5a5d6a7434e+0x723f7) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)                                      
+    #1 alloc::alloc::alloc_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:178 (integration-342bf5a5d6a7434e+0x116ff0) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #2 <alloc::alloc::Global>::alloc_impl_runtime /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:190 (integration-342bf5a5d6a7434e+0x116ff0)
+    #3 <alloc::alloc::Global>::alloc_impl /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:312 (integration-342bf5a5d6a7434e+0x116ff0)
+    #4 <alloc::alloc::Global as core::alloc::Allocator>::allocate_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:435 (integration-342bf5a5d6a7434e+0x116ff0)
+    #5 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::try_new_zeroed_in /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:654 (integration-342bf5a5d6a7434e+0x116ff0)
+    #6 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::new_zeroed_in /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:617 (integration-342bf5a5d6a7434e+0x116ff0)
+    #7 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::new_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:309 (integration-342bf5a5d6a7434e+0x116ff0)
+    #8 <std::sync::mpmc::list::Block<test::event::CompletedTest>>::new /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:73 (integration-342bf5a5d6a7434e+0x116ff0)
+    #9 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::start_send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:208 (integration-342bf5a5d6a7434e+0x116ff0)
+    #10 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:410 (integration-342bf5a5d6a7434e+0x116ff0)
+    #11 <std::sync::mpmc::Sender<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/mod.rs:396 (integration-342bf5a5d6a7434e+0x116ff0)
+
+  Location is heap block of size 9680 at 0x729400000000 allocated by thread T1:
+    #0 calloc /rustc/llvm/src/llvm-project/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:692 (integration-342bf5a5d6a7434e+0x723f7) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)                                      
+    #1 alloc::alloc::alloc_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:178 (integration-342bf5a5d6a7434e+0x116ff0) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #2 <alloc::alloc::Global>::alloc_impl_runtime /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:190 (integration-342bf5a5d6a7434e+0x116ff0)
+    #3 <alloc::alloc::Global>::alloc_impl /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:312 (integration-342bf5a5d6a7434e+0x116ff0)
+    #4 <alloc::alloc::Global as core::alloc::Allocator>::allocate_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/alloc.rs:435 (integration-342bf5a5d6a7434e+0x116ff0)
+    #5 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::try_new_zeroed_in /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:654 (integration-342bf5a5d6a7434e+0x116ff0)
+    #6 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::new_zeroed_in /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:617 (integration-342bf5a5d6a7434e+0x116ff0)
+    #7 <alloc::boxed::Box<std::sync::mpmc::list::Block<test::event::CompletedTest>>>::new_zeroed /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/alloc/src/boxed.rs:309 (integration-342bf5a5d6a7434e+0x116ff0)
+    #8 <std::sync::mpmc::list::Block<test::event::CompletedTest>>::new /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:73 (integration-342bf5a5d6a7434e+0x116ff0)
+    #9 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::start_send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:208 (integration-342bf5a5d6a7434e+0x116ff0)
+    #10 <std::sync::mpmc::list::Channel<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/list.rs:410 (integration-342bf5a5d6a7434e+0x116ff0)
+    #11 <std::sync::mpmc::Sender<test::event::CompletedTest>>::send /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sync/mpmc/mod.rs:396 (integration-342bf5a5d6a7434e+0x116ff0)
+
+  Thread T2 'counts_non_zero' (tid=16228, running) created by main thread at:
+    #0 pthread_create /rustc/llvm/src/llvm-project/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1078 (integration-342bf5a5d6a7434e+0x73f5a) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)                             
+    #1 <std::sys::thread::unix::Thread>::new /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sys/thread/unix.rs:98 (integration-342bf5a5d6a7434e+0x166c60) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #2 <fn() as core::ops::function::FnOnce<()>>::call_once /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ops/function.rs:250 (integration-342bf5a5d6a7434e+0xfb96e) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #3 std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()> /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/backtrace.rs:166 (integration-342bf5a5d6a7434e+0xfe6c1) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #4 std::rt::lang_start::<()>::{closure#0} /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/rt.rs:206 (integration-342bf5a5d6a7434e+0xfd11e) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #5 <&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe as core::ops::function::FnOnce<()>>::call_once /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/ops/function.rs:287 (integration-342bf5a5d6a7434e+0x179cc5) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #6 std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:581 (integration-342bf5a5d6a7434e+0x179cc5)
+    #7 std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:544 (integration-342bf5a5d6a7434e+0x179cc5)
+    #8 std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panic.rs:359 (integration-342bf5a5d6a7434e+0x179cc5)
+    #9 std::rt::lang_start_internal::{closure#0} /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/rt.rs:175 (integration-342bf5a5d6a7434e+0x179cc5)
+    #10 std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:581 (integration-342bf5a5d6a7434e+0x179cc5)
+    #11 std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:544 (integration-342bf5a5d6a7434e+0x179cc5)
+    #12 std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panic.rs:359 (integration-342bf5a5d6a7434e+0x179cc5)
+    #13 std::rt::lang_start_internal /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/rt.rs:171 (integration-342bf5a5d6a7434e+0x179cc5)
+    #14 main ??:? (integration-342bf5a5d6a7434e+0xfc9c9) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+
+  Thread T1 'averages_only_p' (tid=16226, finished) created by main thread at:
+    #0 pthread_create /rustc/llvm/src/llvm-project/compiler-rt/lib/tsan/rtl/tsan_interceptors_posix.cpp:1078 (integration-342bf5a5d6a7434e+0x73f5a) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)                             
+    #1 <std::sys::thread::unix::Thread>::new /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/sys/thread/unix.rs:98 (integration-342bf5a5d6a7434e+0x166c60) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #2 <fn() as core::ops::function::FnOnce<()>>::call_once /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ops/function.rs:250 (integration-342bf5a5d6a7434e+0xfb96e) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #3 std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()> /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/sys/backtrace.rs:166 (integration-342bf5a5d6a7434e+0xfe6c1) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #4 std::rt::lang_start::<()>::{closure#0} /home/eugen/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std/src/rt.rs:206 (integration-342bf5a5d6a7434e+0xfd11e) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #5 <&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe as core::ops::function::FnOnce<()>>::call_once /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/ops/function.rs:287 (integration-342bf5a5d6a7434e+0x179cc5) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+    #6 std::panicking::catch_unwind::do_call::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:581 (integration-342bf5a5d6a7434e+0x179cc5)
+    #7 std::panicking::catch_unwind::<i32, &dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:544 (integration-342bf5a5d6a7434e+0x179cc5)
+    #8 std::panic::catch_unwind::<&dyn core::ops::function::Fn<(), Output = i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe, i32> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panic.rs:359 (integration-342bf5a5d6a7434e+0x179cc5)
+    #9 std::rt::lang_start_internal::{closure#0} /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/rt.rs:175 (integration-342bf5a5d6a7434e+0x179cc5)
+    #10 std::panicking::catch_unwind::do_call::<std::rt::lang_start_internal::{closure#0}, isize> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:581 (integration-342bf5a5d6a7434e+0x179cc5)
+    #11 std::panicking::catch_unwind::<isize, std::rt::lang_start_internal::{closure#0}> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panicking.rs:544 (integration-342bf5a5d6a7434e+0x179cc5)
+    #12 std::panic::catch_unwind::<std::rt::lang_start_internal::{closure#0}, isize> /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/panic.rs:359 (integration-342bf5a5d6a7434e+0x179cc5)
+    #13 std::rt::lang_start_internal /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/std/src/rt.rs:171 (integration-342bf5a5d6a7434e+0x179cc5)
+    #14 main ??:? (integration-342bf5a5d6a7434e+0xfc9c9) (BuildId: b6b8d58f4017b0e81694f9e75e233ea8dc484e75)
+
+SUMMARY: ThreadSanitizer: data race /rustc/efc9e1b50cbf2cede7ebe25f0a1fc64fd8b3e942/library/core/src/profiling.rs:29 in core::profiling::compiler_copy::<core::mem::maybe_uninit::MaybeUninit<test::event::CompletedTest>, 304>
+==================
+==================
+WARNING: ThreadSanitizer: data race (pid=16223)
+```
+
 ## 2.5 Найденные проблемы
 
 ### 2.5.1 rust-gdb
@@ -482,11 +621,167 @@ thread caused non-unwinding panic. aborting.
  - dereference of raw pointer is unsafe and requires unsafe block src/lib.rs:62:11 val + *raw
  - thread 'sums_even_numbers' (3654154) panicked at src/lib.rs:11:29: unsafe precondition(s) violated: slice::get_unchecked requires that the index is within the slice
  - thread 'main' (3655315) panicked at src/lib.rs:11:29: unsafe precondition(s) violated: slice::get_unchecked requires that the index is within the slice
+ - SUMMARY: ThreadSanitizer: data race 
 
 
 # 3. Подтверждение корректности
+## 3.1 averages_only_positive
+```text
+ cargo test --all
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/lib.rs (target/debug/deps/broken_app-394bcb09a0bb0cf0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/debug/deps/demo-629523c3c597e9a0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/deps/integration-d812a20ffb69d6d0)
+
+running 8 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тесты проходят
+
+## 3.2 MIRI
+```text
+cargo +nightly miri test
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/miri/x86_64-unknown-linux-gnu/debug/deps/broken_app-8710f211e5fc635a)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/bin/demo.rs (target/miri/x86_64-unknown-linux-gnu/debug/deps/demo-877f2d04eadb8ffe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/integration.rs (target/miri/x86_64-unknown-linux-gnu/debug/deps/integration-2e7be9085bf6b1f8)
+
+running 8 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.83s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тест без ошибок
+
+## 3.3 Valgrind
+```text
+valgrind --leak-check=full cargo test --tests
+==3184== Memcheck, a memory error detector
+==3184== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==3184== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==3184== Command: cargo test --tests
+==3184== 
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/debug/deps/broken_app-394bcb09a0bb0cf0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/debug/deps/demo-629523c3c597e9a0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/deps/integration-d812a20ffb69d6d0)
+
+running 8 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test fib_small_numbers ... ok
+test dedup_preserves_uniques ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тест прошел
+
+## 3.4 Sanitizer
+```text
+RUSTFLAGS="-Zsanitizer=address" cargo test --target x86_64-unknown-linux-gnu
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running unittests src/lib.rs (target/x86_64-unknown-linux-gnu/debug/deps/broken_app-823f9bd8cd006800)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/x86_64-unknown-linux-gnu/debug/deps/demo-41f520e4cd023b42)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/x86_64-unknown-linux-gnu/debug/deps/integration-6383544173c3801d)
+
+running 8 tests
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test counts_non_zero_bytes ... ok
+test averages_only_positive ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_use_after_free ... ok
+test test_leak_buffer ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тест проходит
+
+## 3.5 Гонка данных
+Алгоритм перписан с использованию Arc, Mutex. Без unsafe
+Тест test_concurrency
 
 # 4. Поиск узких мест
+
 
 # 5. Бенчмарки до оптимизации
 
