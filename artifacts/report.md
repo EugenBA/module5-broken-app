@@ -776,15 +776,422 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 Тест проходит
 
+
 ## 3.5 Гонка данных
-Алгоритм перписан с использованию Arc, Mutex. Без unsafe
-Тест test_concurrency
+Алгоритм перписан с использованию Arc, AtomicU64 Без unsafe
+```text
+TSAN_OPTIONS="ignore_noninstrumented_modules=1"  RUSTFLAGS="-Zsanitizer=thread -Cunsafe-allow-abi-mismatch=sanitizer" cargo test --target aarch64-unknown-linux-gnu
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/aarch64-unknown-linux-gnu/debug/deps/broken_app-24e5d23394935436)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/aarch64-unknown-linux-gnu/debug/deps/demo-9632aaa57bfe9e01)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/aarch64-unknown-linux-gnu/debug/deps/integration-38f60fcf209066d2)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+test test_concurrency ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тест проходит
+
+### 3.6 Вывод
+1. Исправлен метод с утчкой буфера - реализован тест test_leak_buffer
+2. Исправле метод с использованием указателя после удаления реализован тест test_use_after_free
+3. Испрален метод подсчета не нулевых байтов - реализован тест counts_non_zero_bytes
+4. Исправлен метод счетчика в разных потоках (гонка данных) - реализован тест test_concurrency
+5. Исправлен метод подсчета положительных средних - существующий тест проходит
 
 # 4. Поиск узких мест
 
+## 4.1 Фламеграф 
+не удалось построить на однократном вызове, функцию майн добавил цикл, чтоб она выполнлась подольше
+![flamegraph_before.svg](flamegraph_before.svg)
+
+Наибольшее время от функции main занимает метод broken_app::algo::slow_fib ~60%
+
+## 4.2 График аллокаций
+```text
+ ms_print massif.out.*
+--------------------------------------------------------------------------------
+Command:            target/release/demo
+Massif arguments:   --time-unit=ms
+ms_print arguments: massif.out.22340 massif.out.25473
+--------------------------------------------------------------------------------
+
+
+    KB
+1.727^                                                                   :#   
+     |                                                                   :#   
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#:::
+     |                                                                   :#::@
+     |                                                                   :#::@
+     |                                                                   :#::@
+     |                                                                   :#::@
+     |                                                                   :#::@
+     |                                                                   :#::@
+   0 +----------------------------------------------------------------------->ms
+     0                                                                     465
+
+Number of snapshots: 27
+ Detailed snapshots: [5 (peak), 15, 25]
+
+```
 
 # 5. Бенчмарки до оптимизации
+## 5.1 Запуск бенчмарков
+### 5.1.1 baseline
+Функции 
+```text
+sum_even: 1.010138ms
+slow_fib: 25.674741ms
+slow_dedup: 439.014271ms
+sum_even: 973.12µs
+slow_fib: 25.272849ms
+slow_dedup: 430.737218ms
+sum_even: 966.564µs
+slow_fib: 25.265201ms
+slow_dedup: 436.15995ms
+```
+### 5.1.2 criterion
+```text
+ Running benches/criterion.rs (target/release/deps/criterion-d862d786b6208596)
+Gnuplot not found, using plotters backend
+sum_even_broken         time:   [932.35 µs 933.80 µs 935.44 µs]
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high mild
+
+slow_fib_broken         time:   [23.411 ms 23.413 ms 23.415 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+
+Benchmarking slow_dedup_broken: Warming up for 3.0000 s
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 41.9s, or reduce sample count to 10.
+slow_dedup_broken       time:   [427.56 ms 432.78 ms 439.17 ms]
+Found 8 outliers among 100 measurements (8.00%)
+  3 (3.00%) high mild
+  5 (5.00%) high severe
+```
 
 # 6. Оптимизация
+## 6.1 Исправления
+ - внесены изменения в функцию slow_fib_broken
+ - внесены изменения в функцию slow_dedup_broken
+ - 
+## 6.2 criterion
+```text
+  Running benches/criterion.rs (target/release/deps/criterion-d862d786b6208596)
+Gnuplot not found, using plotters backend
+sum_even_broken         time:   [926.73 µs 928.99 µs 931.62 µs]
+                        change: [-0.4701% -0.1950% +0.0904%] (p = 0.16 > 0.05)
+                        No change in performance detected.
+
+slow_fib_broken         time:   [52.530 µs 52.536 µs 52.543 µs]
+                        change: [-99.776% -99.776% -99.775%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 8 outliers among 100 measurements (8.00%)
+  4 (4.00%) high mild
+  4 (4.00%) high severe
+
+slow_dedup_broken       time:   [7.8497 ms 7.8529 ms 7.8562 ms]
+                        change: [-98.212% -98.185% -98.163%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+```
+## 6.3 baseline
+```text
+sum_even: 967.397µs
+slow_fib: 79.667µs
+slow_dedup: 8.427726ms
+sum_even: 963.619µs
+slow_fib: 72.427µs
+slow_dedup: 8.056945ms
+sum_even: 976.694µs
+slow_fib: 66.575µs
+slow_dedup: 8.071629ms
+
+```
+
+## 6.4 График аллокаций
+```text
+  ms_print massif.out.*
+--------------------------------------------------------------------------------
+Command:            target/release/demo
+Massif arguments:   --time-unit=ms
+ms_print arguments: massif.out.33313
+--------------------------------------------------------------------------------
+
+
+    KB
+2.414^                                                                   # :::
+     |                                                                   # :::
+     |                                                                   # :::
+     |                                                                   #::::
+     |                                                                   #::::
+     |                                                                   #:::@
+     |                                                              @   :#:::@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                              @::::#:@@@
+     |                                                             :@::::#:@@@
+     |                                                             :@::::#:@@@
+     |                                                             :@::::#:@@@
+     |                                                             :@::::#:@@@
+     |                                                             :@::::#:@@@
+   0 +----------------------------------------------------------------------->ms
+     0                                                                     510
+
+Number of snapshots: 73
+ Detailed snapshots: [5, 18 (peak), 32, 37, 43, 51, 61, 71]
+```
+Аллокаций стало больше, скорость значительно возросла
+
+## 6.5 Фламеграф
+![flamegraph_after.svg](flamegraph_after.svg)
 
 # 7. Проверка «после»
+## 7.1 Test broken-app:
+- cargo test --all
+```text
+cargo test --all
+Compiling broken-app v0.1.0 (/home/eugen/RustroverProjects/module5-broken-app)
+Finished `test` profile [unoptimized + debuginfo] target(s) in 0.46s
+Running unittests src/lib.rs (target/debug/deps/broken_app-0c18ae6db5ac99f4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/debug/deps/demo-7c22384560aced65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/deps/integration-17931b0e6081e646)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_use_after_free ... ok
+test test_leak_buffer ... ok
+test test_concurrency ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+## 7.2 MIRI
+```text
+cargo +nightly miri test
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/miri/aarch64-unknown-linux-gnu/debug/deps/broken_app-f7dc4c22f62eb01c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/bin/demo.rs (target/miri/aarch64-unknown-linux-gnu/debug/deps/demo-b9b94c19cdea6248)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/integration.rs (target/miri/aarch64-unknown-linux-gnu/debug/deps/integration-4f43025d5bee25ae)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_concurrency ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.52s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+Тест пройден
+
+## 7.3 Valgrind
+valgrind --leak-check=full cargo test --tests
+```text
+ valgrind --leak-check=full cargo test --tests
+==35092== Memcheck, a memory error detector
+==35092== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==35092== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==35092== Command: cargo test --tests
+==35092== 
+==35092== Conditional jump or move depends on uninitialised value(s)
+==35092==    at 0x439E1C8: regex_syntax::ast::parse::ParserI<P>::parse_counted_repetition (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x434898B: regex_automata::meta::regex::Builder::build (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x432066B: regex::regex::string::Regex::new (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x4510197: core::ops::function::FnOnce::call_once (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x450D1F7: std::sync::poison::once::Once::call_once::{{closure}} (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x4188707: std::sys::sync::once::futex::Once::call (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x450FB17: <rustup::dist::ParsedToolchainDesc as core::str::traits::FromStr>::from_str (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x450E6F7: <rustup::dist::PartialToolchainDesc as core::str::traits::FromStr>::from_str (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x450B133: rustup::toolchain::names::ResolvableToolchainName::validate (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x45C84EB: rustup::config::Cfg::from_env (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x45C6E57: rustup::cli::common::set_globals (in /home/eugen/.cargo/bin/rustup)
+==35092==    by 0x41C341F: rustup::cli::proxy_mode::main::{{closure}}::{{closure}} (in /home/eugen/.cargo/bin/rustup)
+==35092== 
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.25s
+     Running unittests src/lib.rs (target/debug/deps/broken_app-0c18ae6db5ac99f4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/debug/deps/demo-7c22384560aced65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/deps/integration-17931b0e6081e646)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+test fib_small_numbers ... ok
+test test_concurrency ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+```
+Тест пройден
+
+## 7.4 Sanitizer
+```text
+RUSTFLAGS="-Zsanitizer=address" cargo test --target aarch64-unknown-linux-gnu
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.31s
+     Running unittests src/lib.rs (target/aarch64-unknown-linux-gnu/debug/deps/broken_app-93cc0137c7679895)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/aarch64-unknown-linux-gnu/debug/deps/demo-2aa67638f2b3399f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/aarch64-unknown-linux-gnu/debug/deps/integration-e63e89d269a00a2f)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test normalize_simple ... ok
+test fib_small_numbers ... ok
+test sums_even_numbers ... ok
+test test_use_after_free ... ok
+test test_leak_buffer ... ok
+test test_concurrency ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+```text
+TSAN_OPTIONS="ignore_noninstrumented_modules=1"  RUSTFLAGS="-Zsanitizer=thread -Cunsafe-allow-abi-mismatch=sanitizer" cargo test --target aarch64-unknown-linux-gnu
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/aarch64-unknown-linux-gnu/debug/deps/broken_app-24e5d23394935436)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/demo.rs (target/aarch64-unknown-linux-gnu/debug/deps/demo-9632aaa57bfe9e01)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/aarch64-unknown-linux-gnu/debug/deps/integration-38f60fcf209066d2)
+
+running 9 tests
+test averages_only_positive ... ok
+test counts_non_zero_bytes ... ok
+test dedup_preserves_uniques ... ok
+test fib_small_numbers ... ok
+test normalize_simple ... ok
+test sums_even_numbers ... ok
+test test_leak_buffer ... ok
+test test_use_after_free ... ok
+test test_concurrency ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests broken_app
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```

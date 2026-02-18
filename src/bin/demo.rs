@@ -1,7 +1,6 @@
 use broken_app::{algo, leak_buffer, normalize, sum_even};
 
 fn main() {
-    //for i in 0..100 {
         let nums = [1, 2, 3, 4];
         println!("sum_even: {}", sum_even(&nums));
 
@@ -16,5 +15,4 @@ fn main() {
 
         let uniq = algo::slow_dedup(&[1, 2, 2, 3, 1, 4, 4]);
         println!("dedup: {:?}", uniq);
-   // }
 }

@@ -55,8 +55,6 @@ fn test_concurrency()
     let counter = Counter::new();
     let a = counter.race_increment(1000, 10);
     let b = counter.read_after_sleep();
-    assert!(a.is_some());
-    assert!(b.is_some());
-    assert_eq!(a.unwrap(), b.unwrap());
+    assert_eq!(a, b);
 
 }
