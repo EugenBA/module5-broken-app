@@ -625,7 +625,7 @@ WARNING: ThreadSanitizer: data race (pid=16223)
 
 
 # 3. Подтверждение корректности
-## 3.1 averages_only_positive
+## 3.1 Тесты
 ```text
  cargo test --all
     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
