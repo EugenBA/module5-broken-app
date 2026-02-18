@@ -1,0 +1,1138 @@
+desc: --time-unit=ms
+cmd: target/release/demo
+time_unit: ms
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=436
+mem_heap_B=472
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=439
+mem_heap_B=592
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=440
+mem_heap_B=1616
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=441
+mem_heap_B=1736
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=446
+mem_heap_B=1736
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=detailed
+n4: 1736 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x49E3567: _IO_file_doallocate (filedoalloc.c:91)
+  n1: 1024 0x49F4A7F: _IO_doallocbuf (genops.c:373)
+   n1: 1024 0x49F4A7F: _IO_doallocbuf (genops.c:368)
+    n1: 1024 0x49F266F: _IO_file_underflow@@GLIBC_2.17 (fileops.c:520)
+     n1: 1024 0x49E5463: getdelim (iogetdelim.c:77)
+      n1: 1024 0x49FCE6F: pthread_getattr_np@@GLIBC_2.32 (pthread_getattr_np.c:122)
+       n1: 1024 0x401FA0B: get_stack_start (stack_overflow.rs:372)
+        n1: 1024 0x401FA0B: stack_start_aligned (stack_overflow.rs:389)
+         n1: 1024 0x401FA0B: install_main_guard_linux (stack_overflow.rs:442)
+          n1: 1024 0x401FA0B: install_main_guard (stack_overflow.rs:413)
+           n1: 1024 0x401FA0B: init (stack_overflow.rs:155)
+            n1: 1024 0x401FA0B: init (mod.rs:42)
+             n1: 1024 0x401FA0B: init (rt.rs:118)
+              n1: 1024 0x401FA0B: {closure#0} (rt.rs:173)
+               n1: 1024 0x401FA0B: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                n1: 1024 0x401FA0B: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                 n1: 1024 0x401FA0B: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                  n1: 1024 0x401FA0B: std::rt::lang_start_internal (rt.rs:171)
+                   n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                    n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 472 0x49E426B: __fopen_internal (iofopen.c:65)
+  n1: 472 0x49FCD67: pthread_getattr_np@@GLIBC_2.32 (pthread_getattr_np.c:85)
+   n1: 472 0x401FA0B: get_stack_start (stack_overflow.rs:372)
+    n1: 472 0x401FA0B: stack_start_aligned (stack_overflow.rs:389)
+     n1: 472 0x401FA0B: install_main_guard_linux (stack_overflow.rs:442)
+      n1: 472 0x401FA0B: install_main_guard (stack_overflow.rs:413)
+       n1: 472 0x401FA0B: init (stack_overflow.rs:155)
+        n1: 472 0x401FA0B: init (mod.rs:42)
+         n1: 472 0x401FA0B: init (rt.rs:118)
+          n1: 472 0x401FA0B: {closure#0} (rt.rs:173)
+           n1: 472 0x401FA0B: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+            n1: 472 0x401FA0B: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+             n1: 472 0x401FA0B: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+              n1: 472 0x401FA0B: std::rt::lang_start_internal (rt.rs:171)
+               n1: 472 0x400903B: std::rt::lang_start (rt.rs:205)
+                n0: 472 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 240 0x49E5343: getdelim (iogetdelim.c:107)
+  n1: 240 0x49FCE6F: pthread_getattr_np@@GLIBC_2.32 (pthread_getattr_np.c:122)
+   n1: 240 0x401FA0B: get_stack_start (stack_overflow.rs:372)
+    n1: 240 0x401FA0B: stack_start_aligned (stack_overflow.rs:389)
+     n1: 240 0x401FA0B: install_main_guard_linux (stack_overflow.rs:442)
+      n1: 240 0x401FA0B: install_main_guard (stack_overflow.rs:413)
+       n1: 240 0x401FA0B: init (stack_overflow.rs:155)
+        n1: 240 0x401FA0B: init (mod.rs:42)
+         n1: 240 0x401FA0B: init (rt.rs:118)
+          n1: 240 0x401FA0B: {closure#0} (rt.rs:173)
+           n1: 240 0x401FA0B: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+            n1: 240 0x401FA0B: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+             n1: 240 0x401FA0B: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+              n1: 240 0x401FA0B: std::rt::lang_start_internal (rt.rs:171)
+               n1: 240 0x400903B: std::rt::lang_start (rt.rs:205)
+                n0: 240 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=6
+#-----------
+time=446
+mem_heap_B=1496
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=448
+mem_heap_B=472
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=449
+mem_heap_B=184
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=450
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=451
+mem_heap_B=548
+mem_heap_extra_B=28
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=453
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=460
+mem_heap_B=1580
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=461
+mem_heap_B=1598
+mem_heap_extra_B=58
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=462
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=469
+mem_heap_B=1648
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=474
+mem_heap_B=1792
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=475
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=476
+mem_heap_B=2404
+mem_heap_extra_B=68
+mem_stacks_B=0
+heap_tree=peak
+n4: 2404 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 832 0x400C4BF: alloc (alloc.rs:95)
+  n1: 832 0x400C4BF: alloc::alloc::Global::alloc_impl (alloc.rs:190)
+   n1: 832 0x400C71F: <alloc::alloc::Global as core::alloc::Allocator>::allocate (alloc.rs:251)
+    n1: 832 0x4011473: do_alloc<alloc::alloc::Global> (alloc.rs:19)
+     n1: 832 0x4011473: hashbrown::raw::RawTableInner::new_uninitialized (mod.rs:1613)
+      n1: 832 0x401170B: hashbrown::raw::RawTableInner::fallible_with_capacity (mod.rs:1672)
+       n1: 832 0x4012A5F: prepare_resize<alloc::alloc::Global> (mod.rs:2738)
+        n1: 832 0x4012A5F: resize_inner<alloc::alloc::Global> (mod.rs:2936)
+         n1: 832 0x4012A5F: reserve_rehash_inner<alloc::alloc::Global> (mod.rs:2824)
+          n1: 832 0x4012A5F: hashbrown::raw::RawTable<T,A>::reserve_rehash (mod.rs:1013)
+           n1: 832 0x4013CCB: hashbrown::raw::RawTable<T,A>::reserve (mod.rs:962)
+            n1: 832 0x4013433: hashbrown::raw::RawTable<T,A>::find_or_find_insert_index (mod.rs:1167)
+             n1: 832 0x401047F: find_or_find_insert_index<u64, u64, std::hash::random::RandomState, alloc::alloc::Global, u64> (map.rs:1863)
+              n1: 832 0x401047F: hashbrown::map::HashMap<K,V,S,A>::insert (map.rs:1843)
+               n1: 832 0x400E82F: std::collections::hash::map::HashMap<K,V,S>::insert (map.rs:1208)
+                n1: 832 0x400E5B7: broken_app::algo::fib_memoized (algo.rs:26)
+                 n1: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                  n1: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                   n1: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                    n1: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                     n1: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                      n2: 832 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                       n1: 552 0x400E5EF: broken_app::algo::slow_fib (algo.rs:33)
+                        n1: 552 0x4009793: demo::main (demo.rs:14)
+                         n1: 552 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 552 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 552 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 552 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 552 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 552 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 552 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 552 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 552 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 552 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 552 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 552 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 552 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 552 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+                       n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                        n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                         n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                          n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                           n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                            n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                             n2: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                              n1: 280 0x400E5EF: broken_app::algo::slow_fib (algo.rs:33)
+                               n1: 280 0x4009793: demo::main (demo.rs:14)
+                                n1: 280 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                                 n1: 280 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                                  n1: 280 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                                   n1: 280 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                                    n1: 280 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                                     n1: 280 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                                      n1: 280 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                       n1: 280 0x401FBBF: {closure#0} (rt.rs:175)
+                                        n1: 280 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                         n1: 280 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                          n1: 280 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                           n1: 280 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                            n0: 280 0x400903B: std::rt::lang_start (rt.rs:205)
+                              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 11 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=477
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=478
+mem_heap_B=1616
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=480
+mem_heap_B=1648
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=481
+mem_heap_B=1684
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=482
+mem_heap_B=1604
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=483
+mem_heap_B=1648
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=484
+mem_heap_B=1604
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=485
+mem_heap_B=2124
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=486
+mem_heap_B=1852
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=487
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=488
+mem_heap_B=1852
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=489
+mem_heap_B=1582
+mem_heap_extra_B=50
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=490
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=491
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1572 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 12 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=33
+#-----------
+time=492
+mem_heap_B=1604
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=493
+mem_heap_B=2404
+mem_heap_extra_B=68
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=494
+mem_heap_B=1684
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=495
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=496
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1572 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 12 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=497
+mem_heap_B=1728
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=498
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=499
+mem_heap_B=1598
+mem_heap_extra_B=58
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=500
+mem_heap_B=2404
+mem_heap_extra_B=68
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=501
+mem_heap_B=1996
+mem_heap_extra_B=60
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=502
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1572 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 12 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=503
+mem_heap_B=2124
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=504
+mem_heap_B=1648
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=505
+mem_heap_B=1616
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=506
+mem_heap_B=2404
+mem_heap_extra_B=68
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=507
+mem_heap_B=2124
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=507
+mem_heap_B=1684
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=507
+mem_heap_B=1604
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=507
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1572 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 12 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=52
+#-----------
+time=507
+mem_heap_B=1580
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=507
+mem_heap_B=1588
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=507
+mem_heap_B=1598
+mem_heap_extra_B=58
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=507
+mem_heap_B=1582
+mem_heap_extra_B=50
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=507
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=507
+mem_heap_B=1648
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=507
+mem_heap_B=1792
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=507
+mem_heap_B=1716
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=507
+mem_heap_B=1996
+mem_heap_extra_B=60
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=507
+mem_heap_B=1852
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=detailed
+n4: 1852 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1024 0x40240A3: alloc (alloc.rs:95)
+  n1: 1024 0x40240A3: alloc_impl (alloc.rs:190)
+   n1: 1024 0x40240A3: allocate (alloc.rs:251)
+    n1: 1024 0x40240A3: try_allocate_in<alloc::alloc::Global> (mod.rs:468)
+     n1: 1024 0x40240A3: with_capacity_in<alloc::alloc::Global> (mod.rs:419)
+      n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:187)
+       n1: 1024 0x40240A3: with_capacity_in<u8, alloc::alloc::Global> (mod.rs:913)
+        n1: 1024 0x40240A3: with_capacity<u8> (mod.rs:523)
+         n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (bufwriter.rs:122)
+          n1: 1024 0x40240A3: with_capacity<std::io::stdio::StdoutRaw> (linewriter.rs:110)
+           n1: 1024 0x40240A3: new<std::io::stdio::StdoutRaw> (linewriter.rs:90)
+            n1: 1024 0x40240A3: {closure#0} (stdio.rs:719)
+             n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+              n1: 1024 0x40240A3: {closure#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:534)
+               n1: 1024 0x40240A3: std::sync::once::Once::call_once_force::{{closure}} (once.rs:219)
+                n1: 1024 0x4004D83: std::sys::sync::once::futex::Once::call (futex.rs:178)
+                 n1: 1024 0x40052DF: call_once_force<std::sync::once_lock::{impl#0}::initialize::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !>> (once.rs:219)
+                  n1: 1024 0x40052DF: std::sync::once_lock::OnceLock<T>::initialize (once_lock.rs:533)
+                   n1: 1024 0x401F54F: get_or_try_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::sync::once_lock::{impl#0}::get_or_init::{closure_env#0}<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}>, !> (once_lock.rs:409)
+                    n1: 1024 0x401F54F: get_or_init<std::sync::reentrant_lock::ReentrantLock<core::cell::RefCell<std::io::buffered::linewriter::LineWriter<std::io::stdio::StdoutRaw>>>, std::io::stdio::stdout::{closure_env#0}> (once_lock.rs:320)
+                     n1: 1024 0x401F54F: stdout (stdio.rs:719)
+                      n1: 1024 0x401F54F: print_to<std::io::stdio::Stdout> (stdio.rs:1164)
+                       n1: 1024 0x401F54F: std::io::stdio::_print (stdio.rs:1275)
+                        n1: 1024 0x4009687: demo::main (demo.rs:6)
+                         n1: 1024 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                          n1: 1024 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                           n1: 1024 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                            n1: 1024 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                             n1: 1024 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                              n1: 1024 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                               n1: 1024 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                n1: 1024 0x401FBBF: {closure#0} (rt.rs:175)
+                                 n1: 1024 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                  n1: 1024 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                   n1: 1024 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                    n1: 1024 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                     n1: 1024 0x400903B: std::rt::lang_start (rt.rs:205)
+                                      n0: 1024 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n1: 280 0x400C4BF: alloc (alloc.rs:95)
+  n1: 280 0x400C4BF: alloc::alloc::Global::alloc_impl (alloc.rs:190)
+   n1: 280 0x400C71F: <alloc::alloc::Global as core::alloc::Allocator>::allocate (alloc.rs:251)
+    n1: 280 0x4011473: do_alloc<alloc::alloc::Global> (alloc.rs:19)
+     n1: 280 0x4011473: hashbrown::raw::RawTableInner::new_uninitialized (mod.rs:1613)
+      n2: 280 0x401170B: hashbrown::raw::RawTableInner::fallible_with_capacity (mod.rs:1672)
+       n1: 280 0x4012A5F: prepare_resize<alloc::alloc::Global> (mod.rs:2738)
+        n1: 280 0x4012A5F: resize_inner<alloc::alloc::Global> (mod.rs:2936)
+         n1: 280 0x4012A5F: reserve_rehash_inner<alloc::alloc::Global> (mod.rs:2824)
+          n1: 280 0x4012A5F: hashbrown::raw::RawTable<T,A>::reserve_rehash (mod.rs:1013)
+           n1: 280 0x4013CCB: hashbrown::raw::RawTable<T,A>::reserve (mod.rs:962)
+            n1: 280 0x4013433: hashbrown::raw::RawTable<T,A>::find_or_find_insert_index (mod.rs:1167)
+             n1: 280 0x401047F: find_or_find_insert_index<u64, u64, std::hash::random::RandomState, alloc::alloc::Global, u64> (map.rs:1863)
+              n1: 280 0x401047F: hashbrown::map::HashMap<K,V,S,A>::insert (map.rs:1843)
+               n1: 280 0x400E82F: std::collections::hash::map::HashMap<K,V,S>::insert (map.rs:1208)
+                n1: 280 0x400E5B7: broken_app::algo::fib_memoized (algo.rs:26)
+                 n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                  n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                   n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                    n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                     n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                      n2: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                       n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                        n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                         n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                          n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                           n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                            n1: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                             n2: 280 0x400E56B: broken_app::algo::fib_memoized (algo.rs:24)
+                              n1: 280 0x400E5EF: broken_app::algo::slow_fib (algo.rs:33)
+                               n1: 280 0x4009793: demo::main (demo.rs:14)
+                                n1: 280 0x40094F7: core::ops::function::FnOnce::call_once (function.rs:250)
+                                 n1: 280 0x4009093: std::sys::backtrace::__rust_begin_short_backtrace (backtrace.rs:160)
+                                  n1: 280 0x4009063: std::rt::lang_start::{{closure}} (rt.rs:206)
+                                   n1: 280 0x401FBBF: call_once<(), (dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (function.rs:287)
+                                    n1: 280 0x401FBBF: do_call<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panicking.rs:581)
+                                     n1: 280 0x401FBBF: catch_unwind<i32, &(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe)> (panicking.rs:544)
+                                      n1: 280 0x401FBBF: catch_unwind<&(dyn core::ops::function::Fn<(), Output=i32> + core::marker::Sync + core::panic::unwind_safe::RefUnwindSafe), i32> (panic.rs:359)
+                                       n1: 280 0x401FBBF: {closure#0} (rt.rs:175)
+                                        n1: 280 0x401FBBF: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                                         n1: 280 0x401FBBF: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                                          n1: 280 0x401FBBF: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                                           n1: 280 0x401FBBF: std::rt::lang_start_internal (rt.rs:171)
+                                            n0: 280 0x400903B: std::rt::lang_start (rt.rs:205)
+                              n0: 0 in 1 place, below massif's threshold (1.00%)
+                       n0: 0 in 1 place, below massif's threshold (1.00%)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 4 in 11 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=62
+#-----------
+time=507
+mem_heap_B=2404
+mem_heap_extra_B=68
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=507
+mem_heap_B=2124
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=507
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=508
+mem_heap_B=1616
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=508
+mem_heap_B=1648
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=508
+mem_heap_B=1728
+mem_heap_extra_B=64
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=508
+mem_heap_B=1684
+mem_heap_extra_B=52
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=508
+mem_heap_B=1604
+mem_heap_extra_B=44
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=508
+mem_heap_B=1572
+mem_heap_extra_B=36
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=509
+mem_heap_B=548
+mem_heap_extra_B=28
+mem_stacks_B=0
+heap_tree=detailed
+n2: 548 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 544 0x402141F: alloc (alloc.rs:95)
+  n1: 544 0x402141F: alloc_impl (alloc.rs:190)
+   n1: 544 0x402141F: allocate (alloc.rs:251)
+    n1: 544 0x402141F: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:582)
+     n1: 544 0x402141F: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:549)
+      n1: 544 0x402141F: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+       n1: 544 0x402141F: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+        n1: 544 0x402141F: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+         n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+          n1: 544 0x402141F: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1053)
+           n1: 544 0x402141F: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+            n1: 544 0x401FAFB: init (stack_overflow.rs:179)
+             n1: 544 0x401FAFB: init (mod.rs:42)
+              n1: 544 0x401FAFB: init (rt.rs:118)
+               n1: 544 0x401FAFB: {closure#0} (rt.rs:173)
+                n1: 544 0x401FAFB: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+                 n1: 544 0x401FAFB: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+                  n1: 544 0x401FAFB: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+                   n1: 544 0x401FAFB: std::rt::lang_start_internal (rt.rs:171)
+                    n1: 544 0x400903B: std::rt::lang_start (rt.rs:205)
+                     n0: 544 0x4009A1F: main (in /home/eugen/RustroverProjects/module5-broken-app/target/release/demo)
+ n0: 4 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=72
+#-----------
+time=510
+mem_heap_B=544
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
