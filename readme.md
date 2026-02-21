@@ -17,31 +17,48 @@
 
 ## 3. Использованные комманды и инструменты
 1. Запуск интеграционных тестов
+
    cargo test --all
+
    Отчет приведен в документе [report.md](artifacts/report.md) п. 1.2, 3.1, 
 2. Отладка под rust-gdb
+
    rust-gdb target/debug/deps/integration-d812a20ffb69d6d0
+
    Отчет приведен в документе [report.md](artifacts/report.md) п. 2.1
 3. Запуск MIRI
+
    cargo +nightly miri test
+
    Отчет приведен в документе [report.md](artifacts/report.md) п. 2.2, 3.2
 4. Запуск Valgrind
+
    valgrind --leak-check=full cargo test --tests
+
    Отчет приведен в документе [report.md](artifacts/report.md) п. 3.3, 7.3
+
    valgrind --tool=massif --time-unit=ms ./target/release/demo
+
    Артефакты сбора данных аллокаций: artifacts/before_massif.out.25473, artifacts/after_massif.out.25473
 5. Запуск санитайзеров
+
    RUSTFLAGS="-Zsanitizer=address" cargo test --target x86_64-unknown-linux-gnu
+
    TSAN_OPTIONS="ignore_noninstrumented_modules=1"  RUSTFLAGS="-Zsanitizer=thread -Cunsafe-allow-abi-mismatch=sanitizer" cargo test --target x86_64-unknown-linux-gnu
+
    Отчет приведен в документе [report.md](artifacts/report.md) п. 3.4, 3.5, 7.4
 6. Запуск инструментов оптимизации 
      - построение flamegraph:
      cargo flamegraph --release 
+   
      Артефакты: artifacts/flamegraph_before.svg, artifacts/flamegraph_after.svg
+
      Наибольшее время от функции main занимает метод broken_app::algo::slow_fib ~60%
+
      Было использованf мемоизация (исключение повторных расчетов) и убраны не нужные аллокации
      - запуск бэнчей baseline, criterion
        ./scripts/compare.sh, ./scripts/profile.sh
+   
      Артефакты: artifacts/baseline_before.txt, artifacts/baseline_after.txt, artifacts/criterion_before, artifacts/criterion_after 
      
 
