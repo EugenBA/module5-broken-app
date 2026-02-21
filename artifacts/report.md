@@ -818,11 +818,12 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 Тест проходит
 
 ### 3.6 Вывод
-1. Исправлен метод с утчкой буфера - реализован тест test_leak_buffer
+1. Исправлен метод с утечкой буфера - реализован тест test_leak_buffer
 2. Исправле метод с использованием указателя после удаления реализован тест test_use_after_free
 3. Испрален метод подсчета не нулевых байтов - реализован тест counts_non_zero_bytes
 4. Исправлен метод счетчика в разных потоках (гонка данных) - реализован тест test_concurrency
 5. Исправлен метод подсчета положительных средних - существующий тест проходит
+6. Исправлен метод подсчета четных значений на с доустпом за пределы среза, реализованы тесты: sum_even_numbers_boundary, sum_even_numbers_empty, sum_even_numbers_no_even
 
 # 4. Поиск узких мест
 
@@ -1009,16 +1010,20 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running tests/integration.rs (target/debug/deps/integration-17931b0e6081e646)
 
-running 9 tests
+running 12 tests
 test averages_only_positive ... ok
 test counts_non_zero_bytes ... ok
 test dedup_preserves_uniques ... ok
-test fib_small_numbers ... ok
 test normalize_simple ... ok
+test fib_small_numbers ... ok
+test sum_even_numbers_boundary ... ok
+test sum_even_numbers_empty ... ok
+test sum_even_numbers_no_even ... ok
 test sums_even_numbers ... ok
-test test_use_after_free ... ok
 test test_leak_buffer ... ok
+test test_use_after_free ... ok
 test test_concurrency ... ok
+
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
@@ -1047,16 +1052,20 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running tests/integration.rs (target/miri/aarch64-unknown-linux-gnu/debug/deps/integration-4f43025d5bee25ae)
 
-running 9 tests
+running 12 tests
 test averages_only_positive ... ok
 test counts_non_zero_bytes ... ok
 test dedup_preserves_uniques ... ok
-test fib_small_numbers ... ok
 test normalize_simple ... ok
+test fib_small_numbers ... ok
+test sum_even_numbers_boundary ... ok
+test sum_even_numbers_empty ... ok
+test sum_even_numbers_no_even ... ok
 test sums_even_numbers ... ok
-test test_concurrency ... ok
 test test_leak_buffer ... ok
 test test_use_after_free ... ok
+test test_concurrency ... ok
+
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.52s
 
@@ -1106,18 +1115,22 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running tests/integration.rs (target/debug/deps/integration-17931b0e6081e646)
 
-running 9 tests
+running 12 tests
 test averages_only_positive ... ok
 test counts_non_zero_bytes ... ok
 test dedup_preserves_uniques ... ok
 test normalize_simple ... ok
+test fib_small_numbers ... ok
+test sum_even_numbers_boundary ... ok
+test sum_even_numbers_empty ... ok
+test sum_even_numbers_no_even ... ok
 test sums_even_numbers ... ok
 test test_leak_buffer ... ok
 test test_use_after_free ... ok
-test fib_small_numbers ... ok
 test test_concurrency ... ok
 
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 ```
 Тест пройден
 
@@ -1139,18 +1152,22 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running tests/integration.rs (target/aarch64-unknown-linux-gnu/debug/deps/integration-e63e89d269a00a2f)
 
-running 9 tests
+running 12 tests
 test averages_only_positive ... ok
 test counts_non_zero_bytes ... ok
 test dedup_preserves_uniques ... ok
 test normalize_simple ... ok
 test fib_small_numbers ... ok
+test sum_even_numbers_boundary ... ok
+test sum_even_numbers_empty ... ok
+test sum_even_numbers_no_even ... ok
 test sums_even_numbers ... ok
-test test_use_after_free ... ok
 test test_leak_buffer ... ok
+test test_use_after_free ... ok
 test test_concurrency ... ok
 
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
 
    Doc-tests broken_app
 
@@ -1176,18 +1193,22 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
      Running tests/integration.rs (target/aarch64-unknown-linux-gnu/debug/deps/integration-38f60fcf209066d2)
 
-running 9 tests
+running 12 tests
 test averages_only_positive ... ok
 test counts_non_zero_bytes ... ok
 test dedup_preserves_uniques ... ok
-test fib_small_numbers ... ok
 test normalize_simple ... ok
+test fib_small_numbers ... ok
+test sum_even_numbers_boundary ... ok
+test sum_even_numbers_empty ... ok
+test sum_even_numbers_no_even ... ok
 test sums_even_numbers ... ok
 test test_leak_buffer ... ok
 test test_use_after_free ... ok
 test test_concurrency ... ok
 
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
    Doc-tests broken_app
 

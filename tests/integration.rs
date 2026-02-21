@@ -9,6 +9,26 @@ fn sums_even_numbers() {
 }
 
 #[test]
+fn sum_even_numbers_empty() {
+    let v: Vec<i64> = vec![];
+    assert_eq!(sum_even(&v), 0);
+}
+
+#[test]
+fn sum_even_numbers_no_even() {
+    let v = vec![1, 3, 5];
+    assert_eq!(sum_even(&v), 0);
+}
+
+// Этот тест проверит, что мы не используем опасный get_unchecked
+// (если бы он остался, то мог бы вылететь за границы, но тест просто проверит корректность)
+#[test]
+fn sum_even_numbers_boundary() {
+    let v = vec![2];
+    assert_eq!(sum_even(&v), 2);
+}
+
+#[test]
 fn counts_non_zero_bytes() {
     let data = [0_u8, 1, 0, 2, 3];
     assert_eq!(leak_buffer(&data), 3);
